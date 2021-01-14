@@ -1,0 +1,17 @@
+minesweeper-board {
+  .board {
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    .row {
+      display: flex;
+      flex-shrink: 1;
+      flex-direction: row;
+      .cell {
+        display: flex;
+        flex: 0 0 32px;
+        background-color: pink;
+      }
+    }
+  }
+}

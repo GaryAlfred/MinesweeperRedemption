@@ -1,0 +1,13 @@
+<div class="board">
+  <div class="row" *ngFor="let row of board.grid.rows; let i = index">
+    <div
+      class="cell"
+      *ngFor="let c of row; let i2 = index"
+      (click)="checkCell({ r: i, c: i2 })"
+    >
+      <minesweeper-cell
+        [cell]="board.grid.get({ r: i, c: i2 }) || emptyCell"
+      ></minesweeper-cell>
+    </div>
+  </div>
+</div>
