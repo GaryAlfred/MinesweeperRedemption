@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href 'https://garyalfred.github.io/MinesweeperRedemption/'",
+    "build": "ng build --prod --base-href .",
     "deploy": "npx angular-cli-ghpages --dir=dist/minesweeper-redemption",
     "deploy2": "ngh --dir dist/minesweeper-redemption",
     "test": "ng test",
