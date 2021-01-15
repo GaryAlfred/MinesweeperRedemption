@@ -23,7 +23,6 @@ export class Grid<T> {
   public get(key: Point): T {
     const row = this.rows[key.r];
     if (!row || !row[key.c]) {
-      debugger;
       throw new Error('No grid row for key ' + JSON.stringify(key));
     }
 
@@ -46,7 +45,7 @@ export class MSBoard {
     this.grid = new Grid(rows, cols);
   }
 
-  public checkForComplete = () => {    
+  public checkForComplete = () => {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const cell = this.grid.get({ r, c });
@@ -54,7 +53,7 @@ export class MSBoard {
       }
     }
     return true;
-  }
+  };
 
   public initialize = () => {
     for (let r = 0; r < this.rows; r++) {

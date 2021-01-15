@@ -34,4 +34,5 @@
 <div *ngIf="cell.revealed && !cell.hasMine && cell.adjacentMines == 0">
   &nbsp;
 </div>
-<div class="unrevealed" *ngIf="!cell.revealed">&nbsp;</div>
+<div class="marked" *ngIf="!cell.revealed && cell.marked">?</div>
+<div class="unrevealed" *ngIf="!cell.revealed && !cell.marked">&nbsp;</div>

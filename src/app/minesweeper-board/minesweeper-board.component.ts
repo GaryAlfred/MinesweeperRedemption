@@ -4,16 +4,16 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation
-} from "@angular/core";
-import { MSBoard, Point, TriggerResult } from "../ms-board";
-import { MSCell } from "../ms-cell";
+  ViewEncapsulation,
+} from '@angular/core';
+import { MSBoard, Point, TriggerResult } from '../ms-board';
+import { MSCell } from '../ms-cell';
 
 @Component({
-  selector: "minesweeper-board",
-  templateUrl: "./minesweeper-board.component.html",
-  styleUrls: ["./minesweeper-board.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  selector: 'minesweeper-board',
+  templateUrl: './minesweeper-board.component.html',
+  styleUrls: ['./minesweeper-board.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MinesweeperBoardComponent implements OnInit {
   @Input() public board: MSBoard;
@@ -31,6 +31,7 @@ export class MinesweeperBoardComponent implements OnInit {
 
   public checkCell = (point: Point) => {
     const cell = this.board.grid.get(point);
+    cell.marked = false;
     cell.revealed = true;
     if (cell.hasMine) {
       setTimeout(() => this.gameOverMan.emit(true), 2);
@@ -43,9 +44,14 @@ export class MinesweeperBoardComponent implements OnInit {
     }
   };
 
+  public markCell = (point: Point) => {
+    const cell = this.board.grid.get(point);
+    cell.marked = true;
+    return false;
+  };
+
   private revealSafeAdjacents = (point: Point) => {
     const adjacents = this.board.getAdjacentCells(point.r, point.c);
-    debugger;
     for (let i = 0; i < adjacents.length; i++) {
       const check = adjacents[i];
       if (!check.revealed && !check.hasMine) {
