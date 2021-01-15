@@ -11,4 +11,22 @@ main {
       margin-right: 10px;
     }
   }
+
+  .won {
+    color: green;
+    animation: pulse 1s infinite;
+  }
+
+  .lost {
+    color: red;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+    }
+    100% {
+      color: #fff;
+    }
+  }
 }

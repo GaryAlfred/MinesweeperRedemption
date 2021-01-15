@@ -1,16 +1,18 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { MSBoard, Point } from "./ms-board";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MSBoard, Point } from './ms-board';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
   public appBoard: MSBoard = new MSBoard(1, 1);
   public numMines = 0;
   public lastSize: Point = { r: 3, c: 3 };
+  public gameLost = false;
+  public gameWon = false;
 
   ngOnInit() {
     this.setBoardSize(3, 3);
@@ -27,12 +29,18 @@ export class AppComponent implements OnInit {
   };
 
   public endGame = () => {
-    alert("GAME OVER MAN!");
-    this.setBoardSize(this.lastSize.r, this.lastSize.c);
+    this.gameLost = true;
+    setTimeout(this.reset, 3000);
   };
 
   public winGame = () => {
-    alert("YOU WIN !!!!");
+    this.gameWon = true;
+    setTimeout(this.reset, 3000);
+  };
+
+  private reset = () => {
+    this.gameWon = false;
+    this.gameLost = false;
     this.setBoardSize(this.lastSize.r, this.lastSize.c);
   };
 }

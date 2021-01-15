@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4207 --open",
     "build": "ng build --prod --base-href .",
     "deploy": "npx angular-cli-ghpages --dir=dist/minesweeper-redemption",
     "deploy2": "ngh --dir dist/minesweeper-redemption",

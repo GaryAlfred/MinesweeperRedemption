@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Teko&display=swap");
+
 body {
   padding: 30px;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Teko", sans-serif;
+  font-size: 3em;
 }

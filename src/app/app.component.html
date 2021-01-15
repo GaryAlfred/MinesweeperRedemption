@@ -15,7 +15,16 @@
       <button type="button" (click)="setBoardSize(10, 10)">10 x 10</button>
       <button type="button" (click)="setBoardSize(20, 20)">20 x 20</button>
       <hr />
-      <div>Number of bombs: <span>{{ numMines }}</span></div>
+      <div>
+        # Mines: <span>{{ numMines }}</span>
+      </div>
+      <hr />
+      <div *ngIf="gameWon">
+        <h1 class="won">You won it!</h1>
+      </div>
+      <div *ngIf="gameLost">
+        <h1 class="lost">Game over man! Game over!</h1>
+      </div>
     </div>
   </div>
 </main>
