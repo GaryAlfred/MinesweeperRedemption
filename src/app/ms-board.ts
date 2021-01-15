@@ -46,6 +46,16 @@ export class MSBoard {
     this.grid = new Grid(rows, cols);
   }
 
+  public checkForComplete = () => {    
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        const cell = this.grid.get({ r, c });
+        if (!cell.hasMine && !cell.revealed) return false;
+      }
+    }
+    return true;
+  }
+
   public initialize = () => {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {

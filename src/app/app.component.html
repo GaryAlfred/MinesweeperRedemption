@@ -4,15 +4,18 @@
     <minesweeper-board
       [board]="appBoard"
       (gameOverMan)="endGame()"
+      (youWin)="winGame()"
     ></minesweeper-board>
   </div>
   <div>
     <div>
       Choose a grid size:
-      <button type="button" (click)="setBoardSize(20, 10)">20 x 10</button>
       <button type="button" (click)="setBoardSize(3, 3)">3 x 3</button>
-      <button type="button" (click)="setBoardSize(10, 20)">10 x 20</button>
       <button type="button" (click)="setBoardSize(5, 5)">5 x 5</button>
+      <button type="button" (click)="setBoardSize(10, 10)">10 x 10</button>
+      <button type="button" (click)="setBoardSize(20, 20)">20 x 20</button>
+      <hr />
+      <div>Number of bombs: <span>{{ numMines }}</span></div>
     </div>
   </div>
 </main>

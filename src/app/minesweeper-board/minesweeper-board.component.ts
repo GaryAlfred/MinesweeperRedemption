@@ -4,19 +4,20 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation,
-} from '@angular/core';
-import { MSBoard, Point, TriggerResult } from '../ms-board';
-import { MSCell } from '../ms-cell';
+  ViewEncapsulation
+} from "@angular/core";
+import { MSBoard, Point, TriggerResult } from "../ms-board";
+import { MSCell } from "../ms-cell";
 
 @Component({
-  selector: 'minesweeper-board',
-  templateUrl: './minesweeper-board.component.html',
-  styleUrls: ['./minesweeper-board.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  selector: "minesweeper-board",
+  templateUrl: "./minesweeper-board.component.html",
+  styleUrls: ["./minesweeper-board.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class MinesweeperBoardComponent implements OnInit {
   @Input() public board: MSBoard;
+  @Output() public youWin: EventEmitter<boolean> = new EventEmitter();
   @Output() public gameOverMan: EventEmitter<boolean> = new EventEmitter();
 
   public emptyCell: MSCell = new MSCell({ r: -1, c: -1 });
@@ -36,6 +37,10 @@ export class MinesweeperBoardComponent implements OnInit {
       return;
     }
     this.revealSafeAdjacents(point);
+    const isComplete = this.board.checkForComplete();
+    if (isComplete) {
+      setTimeout(() => this.youWin.emit(true), 2);
+    }
   };
 
   private revealSafeAdjacents = (point: Point) => {
